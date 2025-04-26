@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser
 
-
+from .managers import MyUserManager
 
 
 class MyUser(AbstractBaseUser):
@@ -17,6 +17,7 @@ class MyUser(AbstractBaseUser):
         verbose_name_plural = _('my users')
 
 
+    objects = MyUserManager()
 
     USERNAME_FIELD ='phone_number'
     REQUIRED_FIELDS =['full_name']
@@ -37,3 +38,17 @@ class MyUser(AbstractBaseUser):
     @property
     def is_superuser(self):
         return True
+    
+
+class OtpCode(models.Model):
+    phone_number = models.CharField(max_length=11)
+    code = models.PositiveSmallIntegerField()
+    date_time_created = models.DateTimeField(auto_now_add=timezone.now())
+
+    class Meta:
+        verbose_name = _('otp code')
+        verbose_name_plural = _('otp code')
+
+
+    def __str__(self):
+        return f'{self.phone_number}:{self.code}'
