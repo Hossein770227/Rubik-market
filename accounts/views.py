@@ -8,7 +8,7 @@ from django.utils.translation import gettext as _
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 import pytz
 
 
@@ -20,7 +20,7 @@ class UserRegisterView(View):
     form_class = UserRegisterForm
     def get(self, request):
         form= self.form_class
-        return render(request, 'registration/user_register.html', {'form':form})
+        return render(request, 'accounts/user_register.html', {'form':form})
     
     def post(self, request):
         form =self.form_class(request.POST)
@@ -32,14 +32,14 @@ class UserRegisterView(View):
             random_code = random.randint(1000, 9999)
             send_otp_code(form.cleaned_data['phone'], random_code)
             OtpCode.objects.create(phone_number=form.cleaned_data['phone'], code=random_code)
-            request.session['user_registration_info']={
+            request.session['user_accounts_info']={
                 'phone_number':form.cleaned_data['phone'],
                 'full_name':form.cleaned_data['full_name'],
                 'password':form.cleaned_data['password2'],
             }
             messages.success(request, _('we sent you a code'))
             return redirect('accounts:verify_code')
-        return render(request, 'registration/user_register.html', {'form':form})
+        return render(request, 'accounts/user_register.html', {'form':form})
 
 
 
@@ -47,7 +47,7 @@ class UserRegisterCodeView(View):
     form_class=VerifyCodeForm
     def get(self, request):
         form = self.form_class
-        return render(request, 'registration/verify_code.html', {'form':form})
+        return render(request, 'accounts/verify_code.html', {'form':form})
 
     def post(self, request):
         user_session = request.session['user_registration_info']
@@ -89,7 +89,7 @@ def login_view(request):
             messages.success(request, _('you successfully login'))
             return redirect('products:product_list')
     form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form':form})
+    return render(request, 'accounts/login.html', {'form':form})
 
 
 def logout_view(request):
@@ -111,4 +111,4 @@ def password_change_view(request):
         return redirect('accounts:change_password')
     else:
         form = PasswordChangeForm(user=request.user)
-    return render(request, 'registration/password_change.html',{'form':form})
+    return render(request, 'accounts/password_change.html',{'form':form})
