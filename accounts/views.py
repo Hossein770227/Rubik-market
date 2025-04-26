@@ -1,4 +1,6 @@
+import pytz
 import random
+
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib import messages
@@ -9,8 +11,6 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
 from datetime import datetime, timedelta
-import pytz
-
 
 from .forms import UserRegisterForm, VerifyCodeForm
 from utils import send_otp_code
