@@ -2,6 +2,7 @@ import pytz
 import random
 
 from django.shortcuts import render, redirect
+from django.utils import timezone
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -32,7 +33,7 @@ class UserRegisterView(View):
             random_code = random.randint(1000, 9999)
             send_otp_code(form.cleaned_data['phone'], random_code)
             OtpCode.objects.create(phone_number=form.cleaned_data['phone'], code=random_code)
-            request.session['user_accounts_info']={
+            request.session['user_registration_info']={
                 'phone_number':form.cleaned_data['phone'],
                 'full_name':form.cleaned_data['full_name'],
                 'password':form.cleaned_data['password2'],
@@ -72,11 +73,11 @@ class UserRegisterCodeView(View):
                 code_instance.delete()
                 messages.success(request, _('you register'))
                 login(request, user)
-                return redirect('products:product_list')
+                return redirect('shop:product-list')
             else:
                 messages.error(request, _('this code is wrong'))
                 return redirect('accounts:verify_code')
-        return redirect('products:product_list')
+        return redirect('shop:product-list')
     
 
 
@@ -87,7 +88,7 @@ def login_view(request):
             user =form.get_user()
             login(request, user)
             messages.success(request, _('you successfully login'))
-            return redirect('products:product_list')
+            return redirect('shop:product-list')
     form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form':form})
 
@@ -96,7 +97,7 @@ def logout_view(request):
     if request.method =='POST':
         logout(request)
         messages.error(request, _('you successfully logout'))
-        return redirect('products:product_list')
+        return redirect('shop:product-list')
 
 # password change
 
@@ -107,7 +108,7 @@ def password_change_view(request):
             form.save()
             update_session_auth_hash(request,form.user)
             messages.success(request, _('your password successfully changed'))
-            return redirect('products:product_list')
+            return redirect('shop:product-list')
         return redirect('accounts:change_password')
     else:
         form = PasswordChangeForm(user=request.user)

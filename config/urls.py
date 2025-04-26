@@ -5,4 +5,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('products/', include('shop.urls')),
+
+    # rosetta url for translate
+    path('rosetta/', include('rosetta.urls')),
 ]

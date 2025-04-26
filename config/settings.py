@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     # my apps
     'accounts',
     'shop',
+
+    # third party apps
+    'rosetta',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +137,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.MyUser'
+
+LOCALE_PATHS = [
+os.path.join(BASE_DIR, 'templates/locale'),
+]
+
+LANGUAGES =(
+    ('en', 'English'),
+    ('fa', 'Persian'),
+)
