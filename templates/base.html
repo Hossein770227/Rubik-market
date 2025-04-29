@@ -31,7 +31,7 @@
                     <div class="col-8 d-none d-md-block">
                         <ul>
                             <li><a href="{% url "shop:product-list" %}">{% trans "first page" %}</a></li>
-                            <li><a href="about.html">درباره ما</a></li>
+                            <li><a href="{% url "website:about-us" %}">{% trans "about us" %}</a></li>
                             <li><a href="contact.html">تماس با ما</a></li>
                         </ul>
                     </div>
@@ -366,7 +366,6 @@
     </section>
     <!-- /Header -->
     {% include "includes/messages.html" %}
-
     {% block content %}
     {% endblock content %}
 
@@ -382,7 +381,7 @@
                         <li><a href="faq.html">شیوه های پرداخت</a></li>
                         <li><a href="contact.html">پیگیری سفارش</a></li>
                         <li><a href="faq.html">سوالات متداول</a></li>
-                        <li><a href="about.html">درباره ما</a></li>
+                        <li><a href="{% url "website:about-us" %}>{% trans "about us" %}</a></li>
                         <li><a href="contact.html">تماس با ما</a></li>
                     </ul>
                 </div>

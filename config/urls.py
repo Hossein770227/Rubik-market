@@ -6,7 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('products/', include('shop.urls')),
-    path('/', include('website.urls')),
+    path('', include('website.urls')),
 
     # rosetta url for translate
     path('rosetta/', include('rosetta.urls')),
