@@ -7,5 +7,9 @@ class  Contact(models.Model):
     message = models.TextField(_("message"))
     date_time = models.DateTimeField(_("date time"), auto_now_add=True)
 
+    class Meta:
+        verbose_name = _('contact')
+        verbose_name_plural = _('contact')
+
     def __str__(self):
         return f'{self.email} : {self.message_subject}' 
