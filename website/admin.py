@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from website.models import Contact
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['email', 'message_subject', 'date_time']
+
+    def has_add_permission(self, request):
+        return False
