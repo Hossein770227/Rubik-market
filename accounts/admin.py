@@ -1,9 +1,8 @@
+import jdatetime
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-
-# from jalali_date.admin import ModelAdminJalaliMixin
-
+from django.utils.translation import gettext as _
 
 
 from .forms import UserCreationForm, UserChangeForm
@@ -42,4 +41,10 @@ admin.site.unregister(Group)
 
 @admin.register(OtpCode)
 class OtpCodeAdmin(admin.ModelAdmin):
-    list_display = ['phone_number', 'code', 'date_time_created']
+    list_display = ['phone_number', 'code', 'date_time_persian']
+
+    def date_time_persian(self, obj):
+        return jdatetime.datetime.fromgregorian(datetime=obj.date_time).strftime("%Y/%m/%d %H:%M:%S")
+
+    date_time_persian.short_description = _('date time')
+    date_time_persian.admin_order_field =  _('date time')
