@@ -45,8 +45,7 @@ INSTALLED_APPS = [
     'shop',
     'website',
     'dashboard',
-    'products_digital',
-
+   
     # third party apps
     'rosetta',
     "crispy_forms",
