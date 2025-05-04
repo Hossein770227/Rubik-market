@@ -88,7 +88,7 @@ def login_view(request):
             user =form.get_user()
             login(request, user)
             messages.success(request, _('you successfully login'))
-            return redirect('shop:product-list')
+            return redirect('shop:product_list')
     form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form':form})
 
@@ -97,7 +97,7 @@ def logout_view(request):
     if request.method =='POST':
         logout(request)
         messages.error(request, _('you successfully logout'))
-        return redirect('shop:product-list')
+        return redirect('shop:product_list')
 
 # password change
 
@@ -108,7 +108,7 @@ def password_change_view(request):
             form.save()
             update_session_auth_hash(request,form.user)
             messages.success(request, _('your password successfully changed'))
-            return redirect('shop:product-list')
+            return redirect('shop:product_list')
         return redirect('accounts:change_password')
     else:
         form = PasswordChangeForm(user=request.user)
