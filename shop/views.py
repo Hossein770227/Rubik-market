@@ -11,3 +11,9 @@ class PhoneListView(generic.ListView):
     model = Phone
     template_name = 'shop/phone_list.html'
     context_object_name = 'phones'
+
+
+class PhoneDetailView(generic.DetailView):
+    model = Phone
+    template_name = 'shop/phone_detail.html'
+    context_object_name = 'phone'
