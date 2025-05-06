@@ -1,5 +1,6 @@
 
 from django.contrib.auth.models import BaseUserManager
+from django.utils.translation import gettext as _
 
 class MyUserManager(BaseUserManager):
     def create_user(self, phone_number, full_name, password=None, **extra_fields):

@@ -12,22 +12,26 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+from environs import Env
 from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = Env()
+env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&!5eg^9lsy2oi04q4l+d!%6p4cd1i@f8*+2sis^el8x=27bdd@'
+
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -173,4 +177,6 @@ MESSAGE_TAGS={
     constants.ERROR:"danger",
 }
 
-API_KEY='acd07e6c-ffb8-434e-9875-42ac71e1acba'
+
+API_KEY = env('DJANGO_API_KEY')
+LIMO_SMS_URL = env("DJANGO_LIMO_SMS_URL")
