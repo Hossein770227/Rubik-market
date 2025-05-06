@@ -44,7 +44,7 @@ class OtpCodeAdmin(admin.ModelAdmin):
     list_display = ['phone_number', 'code', 'date_time_persian']
 
     def date_time_persian(self, obj):
-        return jdatetime.datetime.fromgregorian(datetime=obj.date_time).strftime("%Y/%m/%d %H:%M:%S")
+        return jdatetime.datetime.fromgregorian(datetime=obj.date_time_created).strftime("%Y/%m/%d %H:%M:%S")
 
     date_time_persian.short_description = _('date time')
     date_time_persian.admin_order_field =  _('date time')

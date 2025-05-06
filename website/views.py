@@ -9,7 +9,7 @@ def about_view(request):
     return render(request, 'website/about.html')
 
 
-@login_required
+@login_required()
 def contact_view(request):
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)

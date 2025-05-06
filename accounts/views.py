@@ -2,7 +2,6 @@ import pytz
 import random
 
 from django.shortcuts import render, redirect
-from django.utils import timezone
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -16,6 +15,11 @@ from datetime import datetime, timedelta
 from .forms import UserRegisterForm, VerifyCodeForm
 from utils import send_otp_code
 from .models import OtpCode, MyUser
+
+
+
+
+
 
 class UserRegisterView(View):
     form_class = UserRegisterForm
@@ -44,53 +48,71 @@ class UserRegisterView(View):
 
 
 
+    
+
 class UserRegisterCodeView(View):
-    form_class=VerifyCodeForm
+    form_class = VerifyCodeForm
+    template_name = 'accounts/verify_code.html'  
     def get(self, request):
-        form = self.form_class
-        return render(request, 'accounts/verify_code.html', {'form':form})
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-        user_session = request.session['user_registration_info']
-        code_instance =OtpCode.objects.get(phone_number=user_session['phone_number'])
+        user_session = request.session.get('user_registration_info')
+        if not user_session:
+            messages.error(request, _('Registration information not found.'))
+            return redirect('accounts:user_register')  
+        
+        code_instance = OtpCode.objects.filter(phone_number=user_session['phone_number']).first()
+
+        if not code_instance:
+            messages.error(request, _('No code was found for this phone number.'))
+            return redirect('accounts:user_register')
+        
         form = self.form_class(request.POST)
+        
         if form.is_valid():
             cd = form.cleaned_data
             now = datetime.now(tz=pytz.timezone('Asia/Tehran'))
-            expired_time = code_instance.date_time_created + timedelta (minutes=2)
-            if OtpCode:
-                if now > expired_time:
-                    code_instance.delete()
-                    messages.error(request, _('your code time is out'))
-                    return redirect ('accounts:user_register')          
+            expired_time = code_instance.date_time_created + timedelta(minutes=2) 
+            
+
             if now > expired_time:
                 code_instance.delete()
-                messages.error(request, _('your code time is out'))
-                return redirect ('accounts:verify_code')
+                messages.error(request, _('The OTP code has expired.'))
+                return redirect('accounts:user_register')  
             
-            if cd['code']==code_instance.code:
-                user=MyUser.objects.create_user(user_session['phone_number'], user_session['full_name'], user_session['password'])
-                code_instance.delete()
-                messages.success(request, _('you register'))
-                login(request, user)
-                return redirect('shop:product-list')
+            if cd['code'] == code_instance.code:
+                user = MyUser.objects.create_user(user_session['phone_number'], user_session['full_name'], user_session['password'])
+                code_instance.delete() 
+                messages.success(request, _('You have successfully registered.'))
+                login(request, user)  
+                return redirect('shop:product_list') 
             else:
-                messages.error(request, _('this code is wrong'))
-                return redirect('accounts:verify_code')
-        return redirect('shop:product-list')
-    
+                messages.error(request, _('This code is incorrect.'))
+                return redirect('accounts:verify_code')  
+        
+        return redirect('shop:product_list') 
+
+
 
 
 def login_view(request):
-    if request.method =='POST':
+    if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            user =form.get_user()
+            user = form.get_user()
             login(request, user)
-            messages.success(request, _('you successfully login'))
-            return redirect('shop:product_list')
-    form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form':form})
+            messages.success(request, _('You have successfully logged in.'))
+            next_url = request.GET.get('next')
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('shop:product_list')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'accounts/login.html', {'form': form})
+
 
 
 def logout_view(request):
