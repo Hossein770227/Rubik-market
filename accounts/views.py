@@ -9,6 +9,7 @@ from django.contrib.auth import login, logout
 from django.utils.translation import gettext as _
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 
 from datetime import datetime, timedelta
 
@@ -123,6 +124,7 @@ def logout_view(request):
 
 # password change
 
+@login_required
 def password_change_view(request):
     if request.method =='POST':
         form = PasswordChangeForm(user=request.user, data=request.POST)

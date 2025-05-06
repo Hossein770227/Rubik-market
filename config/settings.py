@@ -172,3 +172,5 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 MESSAGE_TAGS={
     constants.ERROR:"danger",
 }
+
+API_KEY='acd07e6c-ffb8-434e-9875-42ac71e1acba'

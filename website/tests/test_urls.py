@@ -6,7 +6,7 @@ from website.views import about_view, contact_view
 
 class TestUrls(TestCase):
     def test_about_view_url(self):
-        url = reverse("website:about-us")
+        url = reverse("website:about_us")
         self.assertEqual(resolve(url).func, about_view)
 
     def test_contact_view_url(self):

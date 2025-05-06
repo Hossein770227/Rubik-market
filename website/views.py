@@ -26,4 +26,6 @@ def contact_view(request):
     return render(request, 'website/contact.html', {'form': contact_form}) 
 
 
+def question_view(request):
+     return render(request, 'website/question.html')
 
