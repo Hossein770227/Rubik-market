@@ -1,0 +1,87 @@
+{% extends "_base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block page_title %}
+    {% trans "search " %}
+{% endblock page_title %}
+
+{% block content %}
+<section class="inner-page" id="products-page">
+    {% include "includes/inner_page.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-12 col-lg-9 px-0 pl-lg-0 pr-lg-2 mt-2 mt-lg-0">
+                            <!-- Filters -->
+                            <!-- /Filters -->
+                            <div class="mt-2" id="pager">
+                                <div class="container">
+                                    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-md-4">
+                                        <!-- Products -->
+                                        {% if results %}
+                                            {% for phone in results %}
+                                                <div class="col">
+                                                    <!-- Product Box -->
+                                                    <div class="encode4326654321vfb">
+                                                        {% if phone.image %}
+                                                            <a href="{{ phone.get_absolute_url }}">
+                                                                <div class="image" style="  background-image: url({{ phone.image.url }})"></div>
+                                                            </a>
+                                                        {% else %}
+                                                            <a href="{{ phone.get_absolute_url }}">
+                                                                <div class="image" style="background-image: url({% static "assets/images/products/p100.png" %}">
+                                                                </div>
+                                                            </a>
+                                                        {% endif %}
+                                                        <div class="details p-3">
+                                                            <div class="category">
+                                                                <a href="{{ phone.get_absolute_url }}">گوشی موبایل</a>
+                                                                &nbsp;/&nbsp;
+                                                                <a href="{{ phone.get_absolute_url }}">{{phone.brand}}</a>
+                                                            </div>
+                                                            <a href="{{ phone.get_absolute_url }}"><h2>{{phone.title}}</h2></a>
+                                                            <div class="encode4365gbf265g43d">{{phone.price_without_discount}} {% trans "toma" %}</div>
+                                                            <div class="rate">
+                                                                <i class="fa fa-star-half-alt"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Product Box -->
+                                                </div>
+                                            {% endfor %}
+                                            <!-- /Products -->
+                                        {% else %}
+                                        <p> {% trans "search to " %} <strong>{{query}} </strong>{% trans " has no have any products" %}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% if results %}
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div id="pagination-bg">
+                                                <ul class="pagination justify-content-center pagination-sm"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+ 
+

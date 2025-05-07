@@ -11,6 +11,7 @@ urlpatterns = [
     path('about/', views.about_view,name='about_us' ),
     path('contact/', views.contact_view,name='contact' ),
     path('questions/', views.question_view,name='question'),
+    path('search/', views.search, name='search'),
 ]
 
 

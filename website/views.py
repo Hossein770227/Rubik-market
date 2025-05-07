@@ -1,7 +1,11 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.views.decorators.http import require_GET, require_POST
 
-from website.forms import ContactForm
+from .forms import ContactForm
+
+from shop.models import Phone
 
 
 def about_view(request):
@@ -18,7 +22,7 @@ def contact_view(request):
             contact_message.user = request.user
             contact_message.save() 
 
-            return redirect('shop:product-list') 
+            return redirect('shop:product_ist') 
         else:
             return render(request, 'website/contact.html', {'form': contact_form}) 
     else:
@@ -28,4 +32,20 @@ def contact_view(request):
 
 def question_view(request):
      return render(request, 'website/question.html')
+
+
+
+@require_GET
+def search(request):
+    query = request.GET.get('q')
+    results = []
+
+    if query:
+        results = Phone.objects.filter(
+            Q(title__icontains=query) | Q(brand__name__icontains=query)
+        )
+       
+
+    return render(request, 'website/search_results.html', {'results': results, 'query': query})
+
 
