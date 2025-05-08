@@ -52,8 +52,10 @@ INSTALLED_APPS = [
    
     # third party apps
     'rosetta',
-    "crispy_forms",
-    "crispy_bootstrap5",
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'ckeditor',
+
 ]
 
 MIDDLEWARE = [
@@ -180,3 +182,10 @@ MESSAGE_TAGS={
 
 API_KEY = env('DJANGO_API_KEY')
 LIMO_SMS_URL = env("DJANGO_LIMO_SMS_URL")
+
+# ckeditor_5
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo'],
+    }
+}

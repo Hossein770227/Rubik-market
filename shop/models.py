@@ -3,6 +3,9 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _ 
 from django.utils.text import slugify
 
+from ckeditor.fields import RichTextField
+
+
 class Brand(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name=_("Brand Name"))  
 
@@ -26,7 +29,7 @@ class Phone(models.Model):
     
     title = models.CharField(_("title"), max_length=150)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='phones', verbose_name=_("Brand"))
-    text = models.TextField(_("text"))
+    text = RichTextField(_("text"))
     price_without_discount =models.PositiveIntegerField(_("price without discount"))
     price_with_discount =models.PositiveIntegerField(_("price with discount"))
     image = models.ImageField(_("image"), upload_to='cover/', null=True, blank=True)
@@ -85,7 +88,7 @@ class Laptop(models.Model):
     
     title = models.CharField(_("title"), max_length=150)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='laptops', verbose_name=_("Brand"))
-    text = models.TextField(_("text"))
+    text = RichTextField(_("text"))
     price_without_discount =models.PositiveIntegerField(_("price without discount"))
     price_with_discount =models.PositiveIntegerField(_("price with discount"))
     image = models.ImageField(_("image"), upload_to='cover/', null=True, blank=True)
@@ -115,6 +118,8 @@ class Laptop(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+
 
 
 
