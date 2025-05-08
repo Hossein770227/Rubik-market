@@ -24,7 +24,7 @@ class PhoneDetailView(generic.DetailView):
 
 class LaptopListView(generic.ListView):
     model = Laptop
-    template_name = 'shop/phone_list.html'
+    template_name = 'shop/laptop_list.html'
     context_object_name = 'laptops'
 
     def get_queryset(self):
@@ -34,5 +34,5 @@ class LaptopListView(generic.ListView):
 
 class LaptopDetailView(generic.DetailView):
     model = Laptop
-    template_name = 'shop/phone_detail.html'
+    template_name = 'shop/laptop_detail.html'
     context_object_name = 'laptop'

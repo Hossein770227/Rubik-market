@@ -119,6 +119,9 @@ class Laptop(models.Model):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('shop:laptop_detail', args=[self.id])
+
 
 
 
