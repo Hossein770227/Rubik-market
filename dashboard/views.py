@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
+
+@login_required
+def personal_info(request):
+    return render(request, 'dashboard/personal_info.html')

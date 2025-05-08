@@ -87,7 +87,7 @@ class Laptop(models.Model):
     ]
     
     title = models.CharField(_("title"), max_length=150)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='laptops', verbose_name=_("Brand"))
+    brand = models.ForeignKey(LaptopBrand, on_delete=models.CASCADE, related_name='laptops', verbose_name=_("Brand"))
     text = RichTextField(_("text"))
     price_without_discount =models.PositiveIntegerField(_("price without discount"))
     price_with_discount =models.PositiveIntegerField(_("price with discount"))

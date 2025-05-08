@@ -5,7 +5,7 @@ from django.views.decorators.http import require_GET, require_POST
 
 from .forms import ContactForm
 
-from shop.models import Phone
+from shop.models import Laptop, Phone
 
 
 def about_view(request):
@@ -41,10 +41,17 @@ def search(request):
     results = []
 
     if query:
-        results = Phone.objects.filter(
+        results = Phone.objects.prefetch_related('brand').filter(
             Q(title__icontains=query) | Q(brand__name__icontains=query)
         )
-       
+        results = results.union(
+          Laptop.objects.prefetch_related('brand').filter(
+              Q(title__icontains=query) | Q(brand__name__icontains=query)
+          )
+        )
+        
+        results = list(results)  
+
 
     return render(request, 'website/search_results.html', {'results': results, 'query': query})
 

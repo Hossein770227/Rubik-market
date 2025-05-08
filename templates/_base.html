@@ -55,7 +55,7 @@
                         <div id="search-bar">
                             <form action='{% url "website:search" %}' method='get' > 
                                 {% csrf_token %}
-                                <input type="text" name="q" placeholder="جستجو...">
+                                <input type="text" name="q" placeholder="{% trans "search..." %}">
                                 <button type='submit' style='cursor: pointer;border: none;' ><i class="fa fa-search"></i></button>
                             </form>
                         </div>
@@ -116,7 +116,7 @@
                                         
                                                                         </ul>
                                                                         <ul class="droopmenu-col droopmenu-col4">
-                                                                            <li><a href="{% url "shop:laptop_list" %}">لپ تاپ</a></li>
+                                                                            <li><a href="{% url "shop:laptop_list" %}">{% trans "laptop" %}</a></li>
                                                                         </ul>
 
                                                                     </div>
@@ -148,9 +148,9 @@
                                                     </ul>
                                                 </li>
                                                 <li class="droopmenu-parent" aria-haspopup="true">
-                                                    <a href="profile/personal-info.html" aria-expanded="false">پروفایل کاربری<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
+                                                    <a href="#" aria-expanded="false">پروفایل کاربری<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                     <ul style="">
-                                                        <li><a href="profile/personal-info.html">مشخصات کاربری</a></li>
+                                                        <li><a href="{% url "dashboard:personal_info" %}">{% trans "User profile" %}</a></li>
                                                         <li><a href="profile/factors.html">سفارشات</a></li>
                                                         <li><a href="profile/addresses.html">آدرس ها</a></li>
                                                         <li><a href="profile/favorites.html">علاقه مندی ها</a></li>

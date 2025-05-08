@@ -4,7 +4,7 @@
 
 
 {% block page_title %}
-    {% trans "phone detail " %} 
+    {% trans "laptop detail " %} 
 {% endblock page_title %}
 
 {% block content %}
@@ -23,7 +23,7 @@
                                         <!-- Slides -->
                                         <li id="1" class="swiper-slide">
                                             <a href="assets/images/products/p100.png" itemprop="contentUrl" data-size="900x710">
-                                                <img src="{{phone.image.url}}" itemprop="thumbnail" alt="گوشی موبایل سامسونگ مدل Galaxy A21sdddd" />
+                                                <img src="{{laptop.image.url}}" itemprop="thumbnail" alt="گوشی موبایل سامسونگ مدل Galaxy A21sdddd" />
                                             </a>
                                         </li>
                                         <!-- /Slides -->
@@ -76,7 +76,7 @@
                             </div>
                             <div class="col-12 col-lg-7 mt-5 mt-lg-0 pl-lg-0" id="product-intro">
                                 <a href="product.html">
-                                    <h1>{{phone.title}}</h1>
+                                    <h1>{{laptop.title}}</h1>
                                 </a>
                                 <div class="stars-container">
                                     <i class="fa fa-star"></i>
@@ -87,11 +87,11 @@
                                     <a href="#tabs-panel"><span>(نقد و بررسی)</span></a>
                                 </div>
                                 <div class="encode4365gbf265g43d-container py-2">
-                                    <span class="pre-encode4365gbf265g43d"> {{phone.price_without_discount}}</span>
-                                    <span class="encode4365gbf265g43d">{{phone.price_with_discount}} <span>تومان</span></span>
+                                    <span class="pre-encode4365gbf265g43d"> {{laptop.price_without_discount}}</span>
+                                    <span class="encode4365gbf265g43d">{{laptop.price_with_discount}} <span>تومان</span></span>
                                     <div class="badge badge-danger font-weight-light m-1 py-1 px-2">10%</div>
                                 </div>
-                                <p> {{phone.text}}</p>
+                                <p> {{laptop.text|safe}}</p>
                                 <hr>
                                 <div class="variables">
                                     <div class="title">گزینه های موجود:</div>
