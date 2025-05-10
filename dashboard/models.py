@@ -14,7 +14,7 @@ class Address(models.Model):
     date_time_modified = models.DateTimeField(_("date modified"), auto_now=True)
 
     def __str__(self):
-        return f'{self.name} : {self.full_address}'
+        return f'{self.user.full_name} : {self.full_address}'
     
    
 
