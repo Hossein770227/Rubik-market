@@ -40,86 +40,48 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Order Product Record -->
-                                            <div class="row product">
-                                                <div class="col-12 col-md-4">
-                                                    <div class="row">
-                                                        <div class="col-2 col-md-4 pl-0">
-                                                            <img src="assets/images/products/p100.png" alt="">
-                                                        </div>
-                                                        <div class="col-10 col-md-8">
-                                                            <a href="product.html" target="_blank"><div class="title pt-2">گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</div></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 col-md-2">
-                                                    <div class="d-md-none font-weight-bold">قیمت</div>
-                                                    <div class="pt-1"><span class="product-encode4365gbf265g43d">3.200.000</span> <span>تومان</span></div>
-                                                </div>
-                                                <div class="col-6 col-md-2 pl-4 pr-0 pr-md-3">
-                                                    <div class="d-md-none font-weight-bold">تعداد</div>
-                                                    <div class="input-group mb-3 order-number">
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
-                                                        </div>
-                                                        <input type="text" name="order-number[]" value="1" class="form-control text-center order-number" readonly>
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-outline-secondary btn-minus" type="button">_</button>
+                                            {% for item in cart %}
+                                                <!-- Order Product Record -->
+                                                <div class="row product">
+                                                    <div class="col-12 col-md-4">
+                                                        <div class="row">
+                                                            <div class="col-2 col-md-4 pl-0">
+                                                                <img src="assets/images/products/p100.png" alt="">
+                                                            </div>
+                                                            <div class="col-10 col-md-8">
+                                                                <a href="product.html" target="_blank"><div class="title pt-2">{{item.title}}</div></a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-6 col-md-2">
-                                                    <div class="d-md-none font-weight-bold">تخفیف</div>
-                                                    <div class="pt-1"><span class="product-discount">3.200.000</span> <span>تومان</span></div>
-                                                </div>
-                                                <div class="col-6 col-md-2 pr-0">
-                                                    <div class="d-md-none font-weight-bold">قیمت نهایی</div>
-                                                    <div class="pt-1 pr-2 bg-light"><span class="product-total" >3.000.000</span> <span>تومان</span></div>
-                                                    <a href="#" class="product-remove btn-remove-from-basket" data-id="product->id"><div class="small pl-2"><i class="fa fa-times"></i> حذف</div></a>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <!-- Order Product Record -->
-                                            <!-- Order Product Record -->
-                                            <div class="row product">
-                                                <div class="col-12 col-md-4">
-                                                    <div class="row">
-                                                        <div class="col-2 col-md-4 pl-0">
-                                                            <img src="assets/images/products/p200.png" alt="">
-                                                        </div>
-                                                        <div class="col-10 col-md-8">
-                                                            <a href="product.html" target="_blank"><div class="title pt-2">لپ تاپ 15 اینچی ایسوس مدل VivoBook X543MA-DM905</div></a>
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="d-md-none font-weight-bold">{% trans "price" %}</div>
+                                                        <div class="pt-1"><span class="product-encode4365gbf265g43d">{{item.price_without_discount}}</span> <span>{% trans "toman" %}</span></div>
+                                                    </div>
+                                                    <div class="col-6 col-md-2 pl-4 pr-0 pr-md-3">
+                                                        <div class="d-md-none font-weight-bold">{% trans "quantity" %}</div>
+                                                        <div class="input-group mb-3 order-number">
+                                                            <div class="input-group-prepend">
+                                                                <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
+                                                            </div>
+                                                            <input type="text" name="order-number[]" value="1" class="form-control text-center order-number" readonly>
+                                                            <div class="input-group-prepend">
+                                                                <button class="btn btn-outline-secondary btn-minus" type="button">_</button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-6 col-md-2">
-                                                    <div class="d-md-none font-weight-bold">قیمت</div>
-                                                    <div class="pt-1"><span class="product-encode4365gbf265g43d">3.200.000</span> <span>تومان</span></div>
-                                                </div>
-                                                <div class="col-6 col-md-2 pl-4 pr-0 pr-md-3">
-                                                    <div class="d-md-none font-weight-bold">تعداد</div>
-                                                    <div class="input-group mb-3 order-number">
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
-                                                        </div>
-                                                        <input type="text" name="order-number[]" value="1" class="form-control text-center order-number" readonly>
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-outline-secondary btn-minus" type="button">_</button>
-                                                        </div>
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="d-md-none font-weight-bold">تخفیف</div>
+                                                        <div class="pt-1"><span class="product-discount">3.200.000</span> <span>تومان</span></div>
+                                                    </div>
+                                                    <div class="col-6 col-md-2 pr-0">
+                                                        <div class="d-md-none font-weight-bold">قیمت نهایی</div>
+                                                        <div class="pt-1 pr-2 bg-light"><span class="product-total" >3.000.000</span> <span>تومان</span></div>
+                                                        <a href="#" class="product-remove btn-remove-from-basket" data-id="product->id"><div class="small pl-2"><i class="fa fa-times"></i> حذف</div></a>
                                                     </div>
                                                 </div>
-                                                <div class="col-6 col-md-2">
-                                                    <div class="d-md-none font-weight-bold">تخفیف</div>
-                                                    <div class="pt-1"><span class="product-discount">3.200.000</span> <span>تومان</span></div>
-                                                </div>
-                                                <div class="col-6 col-md-2 pr-0">
-                                                    <div class="d-md-none font-weight-bold">قیمت نهایی</div>
-                                                    <div class="pt-1 pr-2 bg-light"><span class="product-total" >3.000.000</span> <span>تومان</span></div>
-                                                    <a href="#" class="product-remove btn-remove-from-basket" data-id="product->id"><div class="small pl-2"><i class="fa fa-times"></i> حذف</div></a>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <!-- Order Product Record -->
+                                                <hr>
+                                                <!-- Order Product Record -->
+                                            {% endfor %}
                                             <div class="row product">
                                                 <div class="col-12">
                                                     <a href="#" class="product-remove btn-remove-from-basket" data-id="all"><div class="float-end small pl-2 font-weight-bold">خالی کردن سبد</div></a>

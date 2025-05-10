@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _ 
 from django.utils.text import slugify
+from django.contrib.auth import get_user_model
 
 from ckeditor.fields import RichTextField
 
@@ -62,6 +63,57 @@ class Phone(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:phone_detail', args=[self.id])
+
+
+
+class CommentPhone(models.Model):
+    SCORE_VEY_BAD='1'
+    SCORE_BAD='2'
+    SCORE_NORMAL='3'
+    SCORE_GOOD='4'
+    SCORE_PERFECT='5'
+
+    SCORE_CHOICES = (
+        (SCORE_PERFECT,_('perfect')),
+        (SCORE_GOOD,_('good')),
+        (SCORE_NORMAL,_('normal')),
+        (SCORE_BAD,_(' bad')),
+        (SCORE_VEY_BAD,_('very bad')),
+    )
+    author = models.ForeignKey(get_user_model(), verbose_name=_("author"), on_delete=models.CASCADE)
+    product = models.ForeignKey(Phone, verbose_name=_("product"), on_delete=models.CASCADE, related_name='comments')
+    email = models.EmailField(_("email"), max_length=254)
+    text = models.TextField(_("text comment"))
+    score = models.CharField(choices=SCORE_CHOICES, max_length=2)
+    active = models.BooleanField(_("active"), default=True)
+    date_time_created = models.DateTimeField(_("date time created"), auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.author} : {self.product}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class LaptopBrand(models.Model):

@@ -1,6 +1,6 @@
 from django.utils.translation import gettext as _
 from django.contrib import admin
-from .models import Brand, Phone, Laptop, LaptopBrand
+from .models import Brand, CommentPhone, Phone, Laptop, LaptopBrand
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
@@ -41,3 +41,9 @@ class PhoneAdmin(admin.ModelAdmin):
 
     rating_display.short_description = _("Rating") 
 
+
+@admin.register(CommentPhone)
+class CommentPhoneAdmin(admin.ModelAdmin):
+    list_display = ['author','product','email','score','active','date_time_created']
+    search_fields = ['product', 'author', 'email']
+    list_filter = ['author', 'product', 'email', 'active']
