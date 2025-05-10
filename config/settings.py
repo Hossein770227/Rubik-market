@@ -184,9 +184,3 @@ MESSAGE_TAGS={
 API_KEY = env('DJANGO_API_KEY')
 LIMO_SMS_URL = env("DJANGO_LIMO_SMS_URL")
 
-# ckeditor_5
-CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo'],
-    }
-}
