@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'shop',
     'website',
     'dashboard',
+    'cart',
    
     # third party apps
     'rosetta',

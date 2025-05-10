@@ -9,6 +9,7 @@ class ProductList(generic.TemplateView):
 
 class PhoneListView(generic.ListView):
     model = Phone
+    paginate_by = 2
     template_name = 'shop/phone_list.html'
     context_object_name = 'phones'
 
