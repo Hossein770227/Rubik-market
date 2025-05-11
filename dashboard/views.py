@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 
 
@@ -60,3 +60,12 @@ class UpdateAddressView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         messages.error(self.request, 'There was an error updating the address. Please correct the errors below.')
         return super().form_invalid(form)
 
+
+class DeleteAddressView(DeleteView):
+    model = Address
+    template_name = 'dashboard/delete_address.html'
+    success_url = reverse_lazy('dashboard:address')
+
+    def form_valid(self, form):
+        messages.error(self.request, 'Address delete successfully!')
+        return super().form_valid(form)

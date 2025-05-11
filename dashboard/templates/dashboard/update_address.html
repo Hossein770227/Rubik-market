@@ -91,8 +91,7 @@
                                                                 <div class="sub-title">{{address.user.phone_number}}</div>
                                                             </div>
                                                             <div class="col-12 col-sm-2 text-lg-end">
-                                                                <a href="#" onclick="return confirm('آیا جهت حذف این آدرس اطمینان دارید؟')" class="float-right float-sm-left pr-2 pl-sm-2"><i class="fa fa-trash-alt font-weight-normal"></i></a>
-                                                                <a href="{% url "dashboard:update_address" pk=address.pk %}" class="float-right float-sm-left"><i class="fa fa-edit font-weight-normal"></i></a>
+                                                                <a href="{% url "dashboard:delete_address" pk=address.pk %}" class="float-right float-sm-left pr-2 pl-sm-2"><i class="fa fa-trash-alt font-weight-normal"></i></a>
                                                             </div>
                                                     {% endfor %}
                                                     </div>
