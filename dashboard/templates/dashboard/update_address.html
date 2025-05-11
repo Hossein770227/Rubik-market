@@ -4,7 +4,7 @@
 
 
 {% block page_title %}
-    {% trans "address" %} 
+    {% trans " update address" %} 
 {% endblock page_title %}
 
 {% block content %}
@@ -16,13 +16,13 @@
                 <div class="col-12">
                     <div class="content">
                         <div class="row">
-                           {% include "includes/side_panel.html" %}
+                          {% include "includes/side_panel.html" %}
                             <div class="col-12 col-lg-9 pl-lg-0 pr-lg-2 mt-2 mt-lg-0">
                                 <!-- New Address Form -->
-                                {% if not addresses %}
+                                {% if  addresses %}
                                     <div class="custom-container mb-2" id="new-address">
                                         <div class="row pt-2 px-3">
-                                            <div class="col-12"><h1>{% trans "add your address" %}</h1></div>
+                                            <div class="col-12"><h1>{% trans "update your address" %}</h1></div>
                                         </div>
                                         <hr>
                                         <div class="container">
@@ -60,7 +60,7 @@
                                                             </div>
                                                             <div class="col-12">
                                                                 <div class="form-group m-1 pb-3">
-                                                                    <input type="submit" class="btn btn-primary px-5" value="{% trans "save address" %}">
+                                                                    <input type="submit" class="btn btn-primary px-5" value="{% trans "update address" %}">
                                                                 </div>
                                                             </div>
                                                         </div>
