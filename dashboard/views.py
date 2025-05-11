@@ -61,7 +61,7 @@ class UpdateAddressView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_invalid(form)
 
 
-class DeleteAddressView(DeleteView):
+class DeleteAddressView(LoginRequiredMixin,DeleteView):
     model = Address
     template_name = 'dashboard/delete_address.html'
     success_url = reverse_lazy('dashboard:address')
