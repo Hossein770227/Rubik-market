@@ -14,7 +14,13 @@ class AboutViewTest(TestCase):
         response = self.client.get(reverse("website:about_us"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'website/about.html')
-
-    def test_contact_view_POST_valid(self):
-        pass
-        # response = self.client.post(reverse('website:contact'), data={})
+    
+    def test_question_view_GET(self):
+        response = self.client.get(reverse("website:question"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'website/question.html')
+    
+    def test_search_view_GET(self):
+        response = self.client.get(reverse("website:search"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'website/search_results.html')
