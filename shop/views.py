@@ -3,6 +3,7 @@ from django.views import generic
 
 from shop.forms import CommentPhoneForm
 from shop.models import CommentPhone, Laptop, Phone
+from cart.forms import AddToCartForm
 
 class ProductList(generic.TemplateView):
     template_name = 'shop/product_list.html'
@@ -21,6 +22,13 @@ class PhoneDetailView(generic.DetailView):
     model = Phone
     template_name = 'shop/phone_detail.html'
     context_object_name = 'phone'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['phone_add_form'] = AddToCartForm()
+        return context
+
+
 
 
 def comment_phone_view(request, pk):
