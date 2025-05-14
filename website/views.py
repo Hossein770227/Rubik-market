@@ -5,7 +5,7 @@ from django.views.decorators.http import require_GET, require_POST
 
 from .forms import ContactForm
 
-from shop.models import Laptop, Phone
+# from shop.models import Laptop, Phone
 
 
 def about_view(request):

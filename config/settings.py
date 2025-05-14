@@ -46,10 +46,10 @@ INSTALLED_APPS = [
 
     # my apps
     'accounts',
-    'shop',
+    'products',
     'website',
     'dashboard',
-    'cart',
+   
    
     # third party apps
     'rosetta',

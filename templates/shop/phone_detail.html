@@ -92,7 +92,7 @@
                                 </div>
                                 <p> {{phone.text|safe}}</p>
                                 <hr>
-                                <form action='{% url "cart:phone_add" phone.id %}' method='POST'>
+                                <form action='{% url "cart:cart_add" phone.id %}' method='POST'>
                                     {% csrf_token %}
                                     <div class="variables">
                                         <div class="title">گزینه های موجود:</div>

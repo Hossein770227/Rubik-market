@@ -7,11 +7,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('products/', include('shop.urls')),
+    path('', include('products.urls')),
     path('', include('website.urls')),
     path('personal/', include('dashboard.urls')),
-    path('cart/', include('cart.urls')),
-
+    
     # rosetta url for translate
     path('rosetta/', include('rosetta.urls')),
 ]
