@@ -93,7 +93,7 @@
                                 </div>
                                 <p> {{laptop.text|safe}}</p>
                                 <hr>
-                                <form action='' method='POST'>
+                                <form action='{% url "cart:cart_add" laptop.id %}' method='POST'>
                                     {% csrf_token %}
                                     <div class="variables">
                                         <div class="title">گزینه های موجود:</div>

@@ -56,5 +56,5 @@ class Cart:
         self.save()
 
     def get_total_price(self):
-        product_ids = self.cart.keys()
+        product_ids = self.cart.values()
         return sum(item['quantity'] * item['product_obj'].price_without_discount for item in self.cart.values())

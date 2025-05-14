@@ -21,8 +21,10 @@
                                     <ul class="swiper-wrapper">
                                         <!-- Slides -->
                                         <li id="1" class="swiper-slide">
-                                            <a href="{% static "assets/images/products/p100.png" %}" itemprop="contentUrl" data-size="500x150">
-                                                <img style='width:100%; margin-right:20px' src="{{product.image.url}}" alt="">
+                                            <a href="assets/images/products/p100.png" itemprop="contentUrl" data-size="500x150">
+                                                {% if product.image %}
+                                                    <img style='width:100%; margin-right:20px' src="{{product.image.url}}" alt="">
+                                                {% endif %}
                                             </a>
                                         </li>
                                         <!-- /Slides -->
@@ -92,7 +94,7 @@
                                 </div>
                                 <p> {{product.text|safe}}</p>
                                 <hr>
-                                <form action='' method='POST'>
+                                <form action='{% url "cart:cart_add" product.id %}' method='POST'>
                                     {% csrf_token %}
                                     <div class="variables">
                                         <div class="title">گزینه های موجود:</div>
