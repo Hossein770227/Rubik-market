@@ -34,7 +34,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name=_("category"), on_delete=models.CASCADE, related_name='products')
     text = RichTextField(_("text"))
     price_without_discount =models.PositiveIntegerField(_("price without discount"))
-    price_with_discount =models.PositiveIntegerField(_("price with discount"))
+    price_with_discount =models.PositiveIntegerField(_("price with discount"),null=True, blank=True)
     image = models.ImageField(_("image"), upload_to='cover/', null=True, blank=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
     is_active = models.BooleanField(_("active ?"), default=True )

@@ -1,0 +1,140 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load i18n %}
+
+
+{% block page_title %}
+    {% trans "phone detail " %} 
+{% endblock page_title %}
+
+{% block content %}
+    <section class="inner-page" id="product-page">
+        {% include "includes/inner_page.html" %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-12 col-lg-5 px-lg-0">
+                                <div class="swiper-container gallery-top">
+                                    <!-- Additional required wrapper -->
+                                    <ul class="swiper-wrapper">
+                                        <!-- Slides -->
+                                        <li id="1" class="swiper-slide">
+                                            <a href="{% static "assets/images/products/p100.png" %}" itemprop="contentUrl" data-size="500x150">
+                                                {% if phone.image %}
+                                                    <img style='width:100%; margin-right:20px' src="{{phone.image.url}}" alt="">
+                                                {% endif %}
+                                            </a>
+                                        </li>
+                                        <!-- /Slides -->
+                                    </ul>
+                                    <!-- If we need navigation buttons -->
+                                    <div title="قبلی" class="swiper-button-prev swiper-button-white"></div>
+                                    <div title="بعدی" class="swiper-button-next swiper-button-white"></div>
+                                </div>
+
+                                <!-- Swiper -->
+                                <div class="swiper-container gallery-thumbs">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide" style="background-image:url('assets/images/products/p100.png')"></div>
+                                        <div class="swiper-slide" style="background-image:url('assets/images/products/p101.png')"></div>
+                                        <div class="swiper-slide" style="background-image:url('assets/images/products/p102.png')"></div>
+                                        <div class="swiper-slide" style="background-image:url('assets/images/products/p103.png')"></div>
+                                    </div>
+                                </div>
+
+                                <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="pswp__bg"></div>
+                                    <div class="pswp__scroll-wrap">
+                                        <div class="pswp__container">
+                                            <div class="pswp__item"></div>
+                                            <div class="pswp__item"></div>
+                                            <div class="pswp__item"></div>
+                                        </div>
+                                        <div class="pswp__ui pswp__ui--hidden">
+                                            <div class="pswp__top-bar">
+                                                <div class="pswp__counter"></div>
+                                                <button class="pswp__button pswp__button--close" title="بستن (Esc)"></button>
+                                                <button class="pswp__button pswp__button--fs" title="تمام صفحه"></button>
+                                                <button class="pswp__button pswp__button--zoom" title="بزرگنمایی"></button>
+                                                <div class="pswp__preloader">
+                                                    <div class="pswp__preloader__icn">
+                                                        <div class="pswp__preloader__cut">
+                                                            <div class="pswp__preloader__donut"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="pswp__button pswp__button--arrow--left" title="قبلی"></button>
+                                            <button class="pswp__button pswp__button--arrow--right" title="بعدی"></button>
+                                            <div class="pswp__caption">
+                                                <div class="pswp__caption__center"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7 mt-5 mt-lg-0 pl-lg-0" id="product-intro">
+                                <a href="product.html">
+                                    <h1>{{phone.title}}</h1>
+                                </a>
+                                <div class="stars-container">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <a href="#tabs-panel"><span>(نقد و بررسی)</span></a>
+                                </div>
+                                <div class="encode4365gbf265g43d-container py-2">
+                                    <span class="pre-encode4365gbf265g43d"> {{phone.price_without_discount}}</span>
+                                    <span class="encode4365gbf265g43d">{{phone.price_with_discount}} <span>تومان</span></span>
+                                    <div class="badge badge-danger font-weight-light m-1 py-1 px-2">10%</div>
+                                </div>
+                                <p> {{phone.text|safe}}</p>
+                                <hr>
+                                <form action='' method='POST'>
+                                    {% csrf_token %}
+                                    <div class="variables">
+                                        <div class="title">گزینه های موجود:</div>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-4 col-lg-3">
+                                                <div class="variable">
+                                                    <div class="sub-title pt-2 pb-2">تعداد</div>
+                                                    <input name='quantity' type="number" min="1" max="10" class="form-control" value="1">
+                                                    <button type='submit'>
+                                                            <i class="fa fa-shopping-cart"></i> افزودن به سبد خرید
+                                                    </button>   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="card shadow my-3 p-5 w-sm-75 w-100">
+                <h4 class="mb-5">{% trans "comments" %}:</h4>
+                {% for comment in comments %}
+                    <div class="border-bottom mb-3">
+                        <h5 class="mb-3">{{comment.author}} </h5>
+                        <p>{{comment.text}}</p>
+                        <p>hellllllllllllllo</p>
+                    </div>
+                {% endfor %}
+                <p>ttttttttttttttttttttttttttttttttttt</p>
+                <form>
+                    {{form.as_P}}
+                    {% csrf_token %}
+                </form>
+
+            </div>
+        </div>
+    </section>
+{% endblock content %}

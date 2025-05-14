@@ -4,7 +4,7 @@
 
 
 {% block page_title %}
-    {% trans "phone detail " %} 
+    {% trans "product detail " %} 
 {% endblock page_title %}
 
 {% block content %}
@@ -22,7 +22,7 @@
                                         <!-- Slides -->
                                         <li id="1" class="swiper-slide">
                                             <a href="{% static "assets/images/products/p100.png" %}" itemprop="contentUrl" data-size="500x150">
-                                                <img style='width:100%; margin-right:20px' src="{{phone.image.url}}" alt="">
+                                                <img style='width:100%; margin-right:20px' src="{{product.image.url}}" alt="">
                                             </a>
                                         </li>
                                         <!-- /Slides -->
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-12 col-lg-7 mt-5 mt-lg-0 pl-lg-0" id="product-intro">
                                 <a href="product.html">
-                                    <h1>{{phone.title}}</h1>
+                                    <h1>{{product.title}}</h1>
                                 </a>
                                 <div class="stars-container">
                                     <i class="fa fa-star"></i>
@@ -86,13 +86,13 @@
                                     <a href="#tabs-panel"><span>(نقد و بررسی)</span></a>
                                 </div>
                                 <div class="encode4365gbf265g43d-container py-2">
-                                    <span class="pre-encode4365gbf265g43d"> {{phone.price_without_discount}}</span>
-                                    <span class="encode4365gbf265g43d">{{phone.price_with_discount}} <span>تومان</span></span>
+                                    <span class="pre-encode4365gbf265g43d"> {{product.price_without_discount}}</span>
+                                    <span class="encode4365gbf265g43d">{{product.price_with_discount}} <span>تومان</span></span>
                                     <div class="badge badge-danger font-weight-light m-1 py-1 px-2">10%</div>
                                 </div>
-                                <p> {{phone.text|safe}}</p>
+                                <p> {{product.text|safe}}</p>
                                 <hr>
-                                <form action='{% url "cart:cart_add" phone.id %}' method='POST'>
+                                <form action='' method='POST'>
                                     {% csrf_token %}
                                     <div class="variables">
                                         <div class="title">گزینه های موجود:</div>

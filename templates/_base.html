@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-8 d-none d-md-block">
                         <ul>
-                            <li><a href="{% url "shop:phone_list" %}">{% trans "first page" %}</a></li>
+                            <li><a href="{% url "products:product_list" %}">{% trans "first page" %}</a></li>
                             <li><a href="{% url "website:about_us" %}">{% trans "about us" %}</a></li>
                             <li><a href="{% url "website:contact" %}">{% trans "contact" %}</a></li>
                         </ul>
@@ -49,7 +49,7 @@
             <div class="container pt-1">
                 <div class="row py-3 align-content-center">
                     <div class="col-12 col-md-3 col-xl-2 text-center text-md-start pb-2" id="encode4326523bvfb">
-                        <a href="{% url "shop:phone_list" %}">
+                        <a href="{% url "products:product_list" %}">
                             <img src="{% static "assets/images/logo.png" %}" alt="">{% trans "Rubik market" %}
                         </a>
                     </div>
@@ -114,11 +114,11 @@
                                                                     <div class="droopmenu-row">
                                                                         <ul class="droopmenu-col droopmenu-col4">
                                                                         
-                                                                            <li><a href="{% url "shop:phone_list" %}">{% trans "phone" %}</a></li>
+                                                                            <li><a href="{% url "products:phone_list" %}">{% trans "phone" %}</a></li>
                                         
                                                                         </ul>
                                                                         <ul class="droopmenu-col droopmenu-col4">
-                                                                            <li><a href="{% url "shop:laptop_list" %}">{% trans "laptop" %}</a></li>
+                                                                            <li><a href="{% url "products:product_list" %}">{% trans "laptop" %}</a></li>
                                                                         </ul>
 
                                                                     </div>
@@ -138,7 +138,7 @@
                                                 <li class="droopmenu-parent" aria-haspopup="true">
                                                     <a href="#" aria-expanded="false">{% trans "other pages" %}<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                     <ul style="">
-                                                        <li><a href="{% url "cart:cart_detail" %}">{% trans "cart" %}</a></li>
+                                                        <li><a href="">{% trans "cart" %}</a></li>
                                                         <li><a href="checkout.html">پیش فاکتور</a></li>
                                                         <li class="dm-bottom-separator"></li>
                                                         {% if user.is_authenticated %}
@@ -195,8 +195,8 @@
                 <div class="col-6 col-sm-4 col-lg-2">
                     <div class="title"> {% trans "Product groups" %}</div>
                     <ul>
-                        <li><a href="{% url "shop:phone_list" %}">{% trans "phone" %}</a></li>
-                        <li><a href="{% url "shop:laptop_list" %}">{% trans "laptop" %}</a></li>
+                        <li><a href="{% url "products:phone_list" %}">{% trans "phone" %}</a></li>
+                        <li><a href="{% url "products:product_list" %}">{% trans "laptop" %}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2 d-none d-sm-inline-block">
@@ -205,7 +205,7 @@
                         <li><a href="{% url "accounts:login" %}"> {% trans "login" %}</a></li>
                         <li><a href="{% url "accounts:user_register" %}"> {% trans "sign up" %}</a></li>
                         <li><a href="reset-password.html">بازیابی رمز عبور</a></li>
-                        <li><a href="{% url "cart:cart_detail" %}">{% trans "cart" %}</a></li>
+                        <li><a href="">{% trans "cart" %}</a></li>
                         <li><a href="checkout.html">پیش فاکتور</a></li>
                     </ul>
                 </div>

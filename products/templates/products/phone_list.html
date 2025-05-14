@@ -232,22 +232,22 @@
                                                     <!-- Product Box -->
                                                     <div class="encode4326654321vfb">
                                                         {% if phone.image %}
-                                                            <a href="{{ phone.get_absolute_url }}">
+                                                            <a href="">
                                                                 <div class="image" style="  background-image: url({{ phone.image.url }})"></div>
                                                             </a>
                                                         {% else %}
-                                                            <a href="{{ phone.get_absolute_url }}">
+                                                            <a href="{% url "products:phone_detail" phone.id %}">
                                                                 <div class="image" style="background-image: url({% static "assets/images/products/p100.png" %}">
                                                                 </div>
                                                             </a>
                                                         {% endif %}
                                                         <div class="details p-3">
                                                             <div class="category">
-                                                                <a href="{{ phone.get_absolute_url }}">گوشی موبایل</a>
+                                                                <a href="">گوشی موبایل</a>
                                                                 &nbsp;/&nbsp;
-                                                                <a href="{{ phone.get_absolute_url }}">{{phone.brand}}</a>
+                                                                <a href="{% url "products:phone_detail" phone.id %}">{{phone.brand}}</a>
                                                             </div>
-                                                            <a href="{{ phone.get_absolute_url }}"><h2>{{phone.title}}</h2></a>
+                                                            <a href="{% url "products:phone_detail" phone.id %}"><h2>{{phone.title}}</h2></a>
                                                             <div class="encode4365gbf265g43d">{{phone.price_without_discount}} {% trans "toman" %}</div>
                                                             <div class="rate">
                                                                 <i class="fa fa-star-half-alt"></i>
