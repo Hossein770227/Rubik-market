@@ -30,3 +30,16 @@ class PhoneDetailView(DetailView):
     template_name ='products/phone_detail.html'
     context_object_name='phone'
 
+
+class LaptopListView(ListView):
+    model = Product
+    template_name = 'products/laptop_list.html'
+    context_object_name = 'laptops'
+
+    def get_queryset(self):
+        return Product.objects.filter(category=2)
+
+class LaptopDetailView(DetailView):
+    model = Product
+    template_name ='products/laptop_detail.html'
+    context_object_name='laptop'

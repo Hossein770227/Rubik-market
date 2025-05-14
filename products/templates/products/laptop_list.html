@@ -232,22 +232,22 @@
                                                     <!-- Product Box -->
                                                     <div class="encode4326654321vfb">
                                                         {% if laptop.image %}
-                                                            <a href="{{ laptop.get_absolute_url }}">
+                                                            <a href="{% url "products:laptop_detail" laptop.id %}">
                                                                 <div class="image" style="  background-image: url({{ laptop.image.url }})"></div>
                                                             </a>
                                                         {% else %}
-                                                            <a href="{{ laptop.get_absolute_url }}">
+                                                            <a href="{% url "products:laptop_detail" laptop.id %}">
                                                                 <div class="image" style="background-image: url({% static "assets/images/products/p100.png" %}">
                                                                 </div>
                                                             </a>
                                                         {% endif %}
                                                         <div class="details p-3">
                                                             <div class="category">
-                                                                <a href="{{ laptop.get_absolute_url }}">گوشی موبایل</a>
+                                                                <a href="{% url "products:laptop_detail" laptop.id %}">گوشی موبایل</a>
                                                                 &nbsp;/&nbsp;
-                                                                <a href="{{ laptop.get_absolute_url }}">{{laptop.brand}}</a>
+                                                                <a href="{% url "products:laptop_detail" laptop.id %}">{{laptop.brand}}</a>
                                                             </div>
-                                                            <a href="{{ laptop.get_absolute_url }}"><h2>{{laptop.title}}</h2></a>
+                                                            <a href="{% url "products:laptop_detail" laptop.id %}"><h2>{{laptop.title}}</h2></a>
                                                             <div class="encode4365gbf265g43d">{{laptop.price_without_discount}} {% trans "toman" %}</div>
                                                             <div class="rate">
                                                                 <i class="fa fa-star-half-alt"></i>
