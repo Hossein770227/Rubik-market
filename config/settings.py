@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'products',
     'website',
     'dashboard',
+    'cart',
+
    
    
     # third party apps

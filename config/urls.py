@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('products.urls')),
     path('', include('website.urls')),
     path('personal/', include('dashboard.urls')),
+    path("cart/", include('cart.urls')),
     
     # rosetta url for translate
     path('rosetta/', include('rosetta.urls')),
