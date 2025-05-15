@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
 from products.models import Product
+from cart.cart import Cart
 
 
 class ProductListView(ListView):

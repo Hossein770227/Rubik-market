@@ -49,7 +49,10 @@ class Cart:
             yield item
 
     def __len__(self):
-        return len(self.cart.keys())
+        result = 0
+        for i in self.cart.values():
+            result += i
+        return result
 
     def clear(self):
         del self.session['cart']
@@ -57,4 +60,4 @@ class Cart:
 
     def get_total_price(self):
         product_ids = self.cart.values()
-        return sum(item['quantity'] * item['product_obj'].price_without_discount for item in self.cart.values())
+        return (sum(item['quantity'] * item['product_obj'].price_without_discount for item in self.cart.values()))

@@ -42,5 +42,4 @@ def clear_cart(request):
     if cart is not None:
         cart.clear()
         return redirect('cart:cart_detail')
-    else:
-        print('noooooooooo cart')
+
